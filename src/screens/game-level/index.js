@@ -16,6 +16,7 @@ import Level from './entities/level';
 // import Systems from './systems';
 
 import CardLayout from '../../constants/card';
+import Pack from '../../constants/pack';
 
 const styles = StyleSheet.create({
   container: {
@@ -40,6 +41,7 @@ class GameLevelScreen extends PureComponent {
       ratio: 0,
       window: {},
       card: _.clone(CardLayout),
+      pack: _.clone(Pack),
     };
   }
 
@@ -63,13 +65,14 @@ class GameLevelScreen extends PureComponent {
       ratio,
       window,
       card,
+      pack,
     } = this.state;
 
     return (
       <View style={styles.container}>
         <BackButton onPress={this.onBackPress} />
         <GameEngine
-          entities={Level(card, window, ratio)}
+          entities={Level(pack, card, window, ratio)}
         />
       </View>
     );
