@@ -24,59 +24,110 @@ const shuffle = (pack) => {
 };
 
 const distributeCards = (pack) => {
-  const hands = [
+  const cards = [
     {
-      cards: {
-        1: pack[0],
-        2: pack[4],
-        3: pack[8],
+      card: pack[0],
+      position: {
+        x: 450,
+        y: (1029),
       },
+      hide: false,
     },
     {
-      cards: {
-        1: pack[1],
-        2: pack[5],
-        3: pack[9],
+      card: pack[4],
+      position: {
+        x: 230,
+        y: (1029),
       },
+      hide: false,
     },
     {
-      cards: {
-        1: pack[2],
-        2: pack[6],
-        3: pack[10],
+      card: pack[8],
+      position: {
+        x: 10,
+        y: (1029),
       },
+      hide: false,
     },
     {
-      cards: {
-        1: pack[3],
-        2: pack[7],
-        3: pack[11],
+      card: pack[1],
+      position: {
+        x: 450,
+        y: (1029),
       },
+      hide: false,
+    },
+    {
+      card: pack[5],
+      position: {
+        x: 230,
+        y: (1029),
+      },
+      hide: false,
+    },
+    {
+      card: pack[9],
+      position: {
+        x: 10,
+        y: (1029),
+      },
+      hide: false,
+    },
+    {
+      card: pack[2],
+      position: {
+        x: 450,
+        y: (1029),
+      },
+      hide: false,
+    },
+    {
+      card: pack[6],
+      position: {
+        x: 230,
+        y: (1029),
+      },
+      hide: false,
+    },
+    {
+      card: pack[10],
+      position: {
+        x: 10,
+        y: (1029),
+      },
+      hide: false,
+    },
+    {
+      card: pack[3],
+      position: {
+        x: 450,
+        y: (1029),
+      },
+      hide: false,
+    },
+    {
+      card: pack[7],
+      position: {
+        x: 230,
+        y: (1029),
+      },
+      hide: false,
+    },
+    {
+      card: pack[11],
+      position: {
+        x: 10,
+        y: (1029),
+      },
+      hide: false,
     },
   ];
 
-  let count = 0;
-  while (count < 4) {
-    const swap = _.floor(_.random(0, 1, true));
-    let temporaryValue = {};
-    let randomIndex = 0;
-
-    if (swap) {
-      randomIndex = _.floor(_.random(0, 3, true));
-      temporaryValue = hands[count];
-      hands[count] = hands[randomIndex];
-      hands[randomIndex] = temporaryValue;
-    }
-
-    count += 1;
-  }
-
-  return hands;
+  return cards;
 };
 
-const setManilhas = (shuffledPack) => {
+const setManilhas = (shuffledPack, vira) => {
   const shuffledPackWithManilhas = [];
-  const vira = shuffledPack[_.floor(_.random(12, _.size(shuffledPack) - 1))];
   const numberManilha = vira.number === 10 ? 1 : vira.number + 1;
   let card = {};
 
@@ -110,12 +161,29 @@ const setManilhas = (shuffledPack) => {
   return shuffledPackWithManilhas;
 };
 
+const getVira = (shuffledPack) => {
+  const vira = {
+    card: shuffledPack[_.floor(_.random(12, _.size(shuffledPack) - 1))],
+    position: {
+      x: 375,
+      y: 598,
+    },
+    hide: false,
+  };
+
+  return vira;
+};
+
 export function generateRound(pack, window, ratio) {
   const shuffledPack = shuffle(pack);
-  const shuffledPackWithManilhas = setManilhas(shuffledPack);
-  const hands = distributeCards(shuffledPackWithManilhas);
+  const vira = getVira(shuffledPack);
+  const shuffledPackWithManilhas = setManilhas(shuffledPack, vira.card);
+  const cards = distributeCards(shuffledPackWithManilhas, window, ratio);
+
+  cards.push(vira);
+
   return {
-    hands,
+    cards,
     window,
     ratio,
   };

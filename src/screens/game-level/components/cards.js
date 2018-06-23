@@ -15,53 +15,52 @@ const styles = StyleSheet.create({
 
 export class Renderer extends PureComponent {
   static propTypes = {
-    position: PropTypes.object,
+    cards: PropTypes.arrayOf(PropTypes.object),
     card: PropTypes.object,
     ratio: PropTypes.number,
-    hide: PropTypes.bool,
   };
 
   static defaultProps = {
-    position: {},
+    cards: [],
     card: {},
     ratio: 0,
-    hide: false,
   };
 
   render() {
     const {
-      position,
-      card,
+      cards,
       ratio,
-      hide,
+      card,
     } = this.props;
+
     return (
-      <Animatable.View
-        style={styles.container}
-        delay={1000}
-        animation="fadeIn"
-        useNativeDriver
-      >
-        <Animatable.Image
-          style={{
-            width: card.width * ratio,
-            height: card.height * ratio,
-            left: position.x,
-            top: position.y,
-          }}
-          source={hide ? card.backImg : card.frontImg}
-        />
-      </Animatable.View>
+      cards.map(item => (
+        <Animatable.View
+          style={styles.container}
+          delay={100}
+          animation="fadeIn"
+          useNativeDriver
+        >
+          <Animatable.Image
+            style={{
+              width: card.width * ratio,
+              height: card.height * ratio,
+              left: item.position.x * ratio,
+              top: item.position.y * ratio,
+            }}
+            source={card.backImg}
+          />
+        </Animatable.View>
+      ))
     );
   }
 }
 
-export default (card, position, ratio, hide) => (
+export default (cards, card, ratio) => (
   {
+    cards,
     card,
-    position,
     ratio,
-    hide,
     renderer: <Renderer />,
   }
 );

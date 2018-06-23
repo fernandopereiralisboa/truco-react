@@ -1,20 +1,14 @@
 import Background from '../components/background';
-import Card from '../components/card';
+import Cards from '../components/cards';
 
 import generateRounds from './round';
 
 const background = require('../../../../assets/images/background.jpg');
 
 export function changeRound(entities, index) {
-  const { card, ratio, rounds } = entities.scene;
+  const { ratio, rounds, card } = entities.scene;
   const round = rounds[index];
-  const position = {
-    x: 100,
-    y: 100,
-  };
-  const hide = true;
-
-  console.log('ROUNDS', rounds);
+  const { cards } = round;
 
   return {
     ...entities,
@@ -24,11 +18,10 @@ export function changeRound(entities, index) {
     scene: {
       ...entities.scene,
     },
-    card: Card(
+    cards: Cards(
+      cards,
       card,
-      position,
       ratio,
-      hide,
     ),
   };
 }
