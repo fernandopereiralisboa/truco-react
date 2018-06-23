@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { GameEngine } from 'react-native-game-engine';
@@ -13,6 +14,8 @@ import BackButton from '../../components/back-button';
 
 import Level from './entities/level';
 // import Systems from './systems';
+
+import CardLayout from '../../constants/card';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,6 +39,7 @@ class GameLevelScreen extends PureComponent {
     this.state = {
       ratio: 0,
       window: {},
+      card: _.clone(CardLayout),
     };
   }
 
@@ -58,13 +62,14 @@ class GameLevelScreen extends PureComponent {
     const {
       ratio,
       window,
+      card,
     } = this.state;
 
     return (
       <View style={styles.container}>
         <BackButton onPress={this.onBackPress} />
         <GameEngine
-          entities={Level(window, ratio)}
+          entities={Level(card, window, ratio)}
         />
       </View>
     );
