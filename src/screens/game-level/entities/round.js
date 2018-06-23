@@ -28,16 +28,16 @@ const distributeCards = (pack) => {
     {
       card: pack[0],
       position: {
-        x: 450,
-        y: (1029),
+        x: 366,
+        y: (1088),
       },
       hide: false,
     },
     {
       card: pack[4],
       position: {
-        x: 230,
-        y: (1029),
+        x: 188,
+        y: (1088),
       },
       hide: false,
     },
@@ -45,7 +45,7 @@ const distributeCards = (pack) => {
       card: pack[8],
       position: {
         x: 10,
-        y: (1029),
+        y: (1088),
       },
       hide: false,
     },

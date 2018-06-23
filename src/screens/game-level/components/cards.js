@@ -43,8 +43,8 @@ export class Renderer extends PureComponent {
         >
           <Animatable.Image
             style={{
-              width: card.width * ratio,
-              height: card.height * ratio,
+              width: card.width * ratio * 0.8,
+              height: card.height * ratio * 0.8,
               left: item.position.x * ratio,
               top: item.position.y * ratio,
             }}
