@@ -28,98 +28,110 @@ const distributeCards = (pack) => {
     {
       card: pack[0],
       position: {
-        x: 366,
-        y: (1088),
+        x: 510,
+        y: 1029,
       },
       hide: false,
+      rotate: false,
     },
     {
       card: pack[4],
       position: {
-        x: 188,
-        y: (1088),
+        x: 270,
+        y: 1029,
       },
       hide: false,
+      rotate: false,
     },
     {
       card: pack[8],
       position: {
-        x: 10,
-        y: (1088),
+        x: 30,
+        y: 1029,
       },
       hide: false,
+      rotate: false,
     },
     {
       card: pack[1],
       position: {
-        x: 450,
-        y: (1029),
+        x: -190,
+        y: 230.5,
       },
-      hide: false,
+      hide: true,
+      rotate: true,
     },
     {
       card: pack[5],
       position: {
-        x: 230,
-        y: (1029),
+        x: -190,
+        y: 450.5,
       },
-      hide: false,
+      hide: true,
+      rotate: true,
     },
     {
       card: pack[9],
       position: {
-        x: 10,
-        y: (1029),
+        x: -190,
+        y: 670.5,
       },
-      hide: false,
+      hide: true,
+      rotate: true,
     },
     {
       card: pack[2],
       position: {
-        x: 450,
-        y: (1029),
+        x: 50,
+        y: -147.5,
       },
-      hide: false,
+      hide: true,
+      rotate: false,
     },
     {
       card: pack[6],
       position: {
-        x: 230,
-        y: (1029),
+        x: 270,
+        y: -147.5,
       },
-      hide: false,
+      hide: true,
+      rotate: false,
     },
     {
       card: pack[10],
       position: {
-        x: 10,
-        y: (1029),
+        x: 490,
+        y: -147.5,
       },
-      hide: false,
+      hide: true,
+      rotate: false,
     },
     {
       card: pack[3],
       position: {
-        x: 450,
-        y: (1029),
+        x: 730,
+        y: 230.5,
       },
-      hide: false,
+      hide: true,
+      rotate: true,
     },
     {
       card: pack[7],
       position: {
-        x: 230,
-        y: (1029),
+        x: 730,
+        y: 450.5,
       },
-      hide: false,
+      hide: true,
+      rotate: true,
     },
     {
       card: pack[11],
       position: {
-        x: 10,
-        y: (1029),
+        x: 730,
+        y: 670.5,
       },
-      hide: false,
+      hide: true,
+      rotate: true,
     },
   ];
 
@@ -165,10 +177,11 @@ const getVira = (shuffledPack) => {
   const vira = {
     card: shuffledPack[_.floor(_.random(12, _.size(shuffledPack) - 1))],
     position: {
-      x: 375,
-      y: 598,
+      x: 270,
+      y: 450.5,
     },
     hide: false,
+    rotate: false,
   };
 
   return vira;

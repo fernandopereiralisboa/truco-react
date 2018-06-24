@@ -6,7 +6,12 @@ import generateRounds from './round';
 const background = require('../../../../assets/images/background.jpg');
 
 export function changeRound(entities, index) {
-  const { ratio, rounds, card } = entities.scene;
+  const {
+    ratio,
+    rounds,
+    card,
+    naipes,
+  } = entities.scene;
   const round = rounds[index];
   const { cards } = round;
 
@@ -22,11 +27,12 @@ export function changeRound(entities, index) {
       cards,
       card,
       ratio,
+      naipes,
     ),
   };
 }
 
-export default (pack, card, window, ratio) => {
+export default (pack, card, naipes, window, ratio) => {
   const rounds = generateRounds(pack, window, ratio);
   return changeRound({
     background: Background(background),
@@ -34,6 +40,7 @@ export default (pack, card, window, ratio) => {
       rounds,
       ratio,
       card,
+      naipes,
     },
   }, 0);
 };

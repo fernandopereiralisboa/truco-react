@@ -3,25 +3,31 @@ const copasImage = require('../../../assets/images/copas.png');
 const espadaImage = require('../../../assets/images/espada.png');
 const ouroImage = require('../../../assets/images/ouro.png');
 
-export const naipes = {
-  paus: {
+const naipes = [
+  {
+    key: 'paus',
     img: pausImage,
     width: 72,
     height: 76,
   },
-  copas: {
+  {
+    key: 'copas',
     img: copasImage,
     width: 76,
     height: 64,
   },
-  espada: {
+  {
+    key: 'espada',
     img: espadaImage,
     width: 73,
     height: 77,
   },
-  ouro: {
+  {
+    key: 'ouro',
     img: ouroImage,
     width: 69,
     height: 78,
   },
-};
+];
+
+export default naipes;
